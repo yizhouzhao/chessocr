@@ -28,7 +28,7 @@ def ignoreContours(img,
                    hierarchy=None,
                    min_ratio_bounding=0.6,
                    min_area_percentage=0.01,
-                   max_area_percentage=0.40):
+                   max_area_percentage=0.85):
     """Filters a contour list based on some rules. If hierarchy != None,
     only top-level contours are considered.
     :param img: source image

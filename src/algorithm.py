@@ -140,6 +140,11 @@ def get_grid_from_lines(lines, close_threshold_v, close_threshold_h, image):
     horizontal, vertical = partitionLines(q_lines)
     vertical = filterCloseLines(vertical, horizontal=False, threshold=close_threshold_v)
     horizontal = filterCloseLines(horizontal, horizontal=True, threshold=close_threshold_h)
+
+    vertical = [v for v in filter(lambda x:x.isStraight(), vertical)]
+    horizontal = [h for h in filter(lambda x:x.isStraight(), horizontal)]
+    
+
     #print("get_grid_from_lines 2",len(vertical), len(horizontal))
     if len(vertical) >= nvertical and len(horizontal) >= nhorizontal:
         grid = (vertical, horizontal)

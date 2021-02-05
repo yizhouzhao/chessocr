@@ -34,6 +34,12 @@ class Line:
 
     def isVertical(self, thresholdAngle=np.pi / 4):
         return abs(np.cos(self._theta)) > np.cos(thresholdAngle)
+    
+    def isStraight(self, thresholdAngle = 10): #in degree
+        temp_theta = (self._theta *180/np.pi) % 90
+        if abs(temp_theta) < thresholdAngle or abs(temp_theta - 90) < thresholdAngle:
+            return True
+        return False
 
     def intersect(self, line):
         ct1 = np.cos(self._theta)
@@ -52,7 +58,7 @@ class Line:
 
 
     def __repr__(self):
-        return "(t: %.2fdeg, r: %.0f)" % (self._theta *360/np.pi, self._rho)
+        return "(t: %.2fdeg, r: %.0f)" % (self._theta *180/np.pi, self._rho)
 
 def partitionLines(lines):
     h = filter(lambda x: x.isHorizontal(), lines)
@@ -61,8 +67,8 @@ def partitionLines(lines):
     h = [(l._center[1], l) for l in h]
     v = [(l._center[0], l) for l in v]
 
-    h.sort()
-    v.sort()
+    h.sort(key=lambda x:x[0])
+    v.sort(key=lambda x:x[0])
 
     h = [l[1] for l in h]
     v = [l[1] for l in v]
