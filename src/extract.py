@@ -190,7 +190,15 @@ def extractTiles(img, grid, w, h):
                            h2.intersect(v2),
                            h2.intersect(v1))
 
+            print("extractTiles", perspective)
+
             tile = extractPerspective(img, perspective, w, h)
+
+            import matplotlib.pyplot as plt
+
+            plt.imshow(tile)
+            plt.show()
+
 
             ret.append(((x,y), tile))
 
