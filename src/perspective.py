@@ -7,13 +7,26 @@ from line import Line, partitionLines, filterCloseLines
 houghThreshold = 150
 hough_threshold_step = 20
 
+rho = 1  # distance resolution in pixels of the Hough grid
+theta = np.pi / 180  # angular resolution in radians of the Hough grid
+threshold = 15  # minimum number of votes (intersections in Hough grid cell)
+min_line_length = 50  # minimum number of pixels making up a line
+max_line_gap = 20  # maximum gap in pixels between connectable line segments
+
+kernel_size = 5
+
 def getPerspective(image, points):
     yy, xx, _ = image.shape
-    tmp = np.zeros(image.shape[0:2], np.uint8);
+    tmp = np.zeros(image.shape[0:2], np.uint8)
     drawContour(tmp, points, (255,), 1)
 
+    tmp = cv2.GaussianBlur(tmp,(kernel_size, kernel_size),0)
+    edges = cv2.Canny(tmp, 50, 150)
+    
+
+
     grid = None
-    for i in range(houghThreshold/hough_threshold_step):
+    for i in range(houghThreshold // hough_threshold_step):
         lines = cv2.HoughLines(tmp, 1, np.pi / 180, houghThreshold-(i * hough_threshold_step))
         if lines is None:
             continue
