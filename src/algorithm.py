@@ -101,7 +101,13 @@ def get_grid_from_contours(image, close_threshold_v, close_threshold_h):
         if grid is not None:
             return grid
     
-    raise("error: cannot extract grid")
+    # if raised error, just cut the board into 8*8
+    #raise("error: cannot extract grid")
+    w,h = image.shape
+    vertical = [Line(rho, 0) for rho in range(0, w + 1, w // 8)]
+    horizontal = [Line(rho, np.pi / 2) for rho in range(0, h + 1, h // 8)]
+    
+    return (vertical, horizontal)
 
 # get perspective(square board) from lines
 def get_perspective_from_lines(lines):
