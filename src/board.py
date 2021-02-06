@@ -1,7 +1,7 @@
 import cv2
 import numpy as np
 
-from util import ratio
+from .util import ratio
 
 
 class Board:

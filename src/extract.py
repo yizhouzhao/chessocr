@@ -1,10 +1,6 @@
-from line import Line, partitionLines, filterCloseLines
-from perspective import getPerspective
-from util import ratio
-from util import showImage, drawPerspective, drawBoundaries, drawContour, writeDocumentationImage
-from util import randomColor
-
-
+from .line import Line, partitionLines, filterCloseLines
+from .perspective import getPerspective
+from .util import showImage, drawPerspective, drawBoundaries, drawContour, writeDocumentationImage, ratio, randomColor
 
 import cv2
 import numpy as np

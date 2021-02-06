@@ -1,8 +1,8 @@
-from board import Board
-from extract import *
+from .board import Board
+from .extract import *
 #from perspective import *
-from util import showImage, drawPerspective, drawBoundaries, drawLines, drawPoint, drawContour, randomColor
-from line import Line
+from .util import showImage, drawPerspective, drawBoundaries, drawLines, drawPoint, drawContour, randomColor
+from .line import Line
 
 import random
 import cv2

@@ -1,7 +1,7 @@
 import cv2
 import numpy as np
-from util import showImage, drawPerspective, drawBoundaries, drawContour, drawPoint, writeDocumentationImage
-from line import Line, partitionLines, filterCloseLines
+from .util import showImage, drawPerspective, drawBoundaries, drawContour, drawPoint, writeDocumentationImage
+from .line import Line, partitionLines, filterCloseLines
 
 
 houghThreshold = 150
