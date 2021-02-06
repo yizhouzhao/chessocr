@@ -159,10 +159,10 @@ def get_grid_from_lines(lines, close_threshold_v, close_threshold_h, image):
         drawLines(image, horizontal, color=(255,255,0), thickness=2)
         
         #---------draw grid
-        print("grid are drawn")
-        plt.imshow(image)
-        plt.show()
-        print("grid are drawn end")
+        # print("grid are drawn")
+        # plt.imshow(image)
+        # plt.show()
+        # print("grid are drawn end")
 
         return grid
 
@@ -170,8 +170,8 @@ def get_grid_from_lines(lines, close_threshold_v, close_threshold_h, image):
 def get_boards_from_perspective(image, perspective):
     b = extractPerspective(image, perspective, extract_width, extract_height)
     
-    plt.imshow(b)
-    plt.show()
+    # plt.imshow(b)
+    # plt.show()
     
     w, h, _ = image.shape
     close_threshold_v = (w / nvertical) / 4
@@ -182,8 +182,8 @@ def get_boards_from_perspective(image, perspective):
     thresh, im_bw = cv2.threshold(im_gray, 128, 255, cv2.THRESH_BINARY | cv2.THRESH_OTSU)
     im_canny = cv2.Canny(im_bw, 50, 150, apertureSize=3)
 
-    plt.imshow(im_canny,cmap="gray")
-    plt.show()
+    # plt.imshow(im_canny,cmap="gray")
+    # plt.show()
 
     #get every grid
     grid = get_grid_from_contours(im_canny, close_threshold_v, close_threshold_h)
