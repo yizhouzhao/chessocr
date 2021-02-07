@@ -88,18 +88,18 @@ def get_perspective_from_contours(image):
 
 # get 8x8 grid from edge contours
 def get_grid_from_contours(image, close_threshold_v, close_threshold_h):
-    for t in range(threshold_max, threshold_min, -threshold_step):
-        # Run Hough on edge detected image
-        # print("get_grid_from_contours t ", t)
-        lines = cv2.HoughLines(image, rho, theta, t, np.array([]),
-                            min_line_length, max_line_gap)
+    # for t in range(threshold_max, threshold_min, -threshold_step):
+    #     # Run Hough on edge detected image
+    #     # print("get_grid_from_contours t ", t)
+    #     lines = cv2.HoughLines(image, rho, theta, t, np.array([]),
+    #                         min_line_length, max_line_gap)
         
-        #if len(lines) > 100:
-        #    break
+    #     #if len(lines) > 100:
+    #     #    break
         
-        grid = get_grid_from_lines(lines, close_threshold_v, close_threshold_h, image)
-        if grid is not None:
-            return grid
+    #     grid = get_grid_from_lines(lines, close_threshold_v, close_threshold_h, image)
+    #     if grid is not None:
+    #         return grid
     
     # if raised error, just cut the board into 8*8
     #raise("error: cannot extract grid")
@@ -170,8 +170,10 @@ def get_grid_from_lines(lines, close_threshold_v, close_threshold_h, image):
 def get_boards_from_perspective(image, perspective):
     b = extractPerspective(image, perspective, extract_width, extract_height)
     
-    # plt.imshow(b)
-    # plt.show()
+    plt.imshow(b)
+    plt.show(block=False)
+    plt.pause(.001)
+    
     
     w, h, _ = image.shape
     close_threshold_v = (w / nvertical) / 4
@@ -202,4 +204,3 @@ if __name__ == "__main__":
     print(perspective)
 
     board =get_boards_from_perspective(img, perspective)
-    

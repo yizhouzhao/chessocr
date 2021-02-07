@@ -78,3 +78,6 @@ if __name__ == '__main__':
     
     fen = "/".join(fen_list)
     print(fen)
+
+        
+    os.system('pause')

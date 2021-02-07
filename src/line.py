@@ -35,7 +35,7 @@ class Line:
     def isVertical(self, thresholdAngle=np.pi / 4):
         return abs(np.cos(self._theta)) > np.cos(thresholdAngle)
     
-    def isStraight(self, thresholdAngle = 10): #in degree
+    def isStraight(self, thresholdAngle = 5): #in degree
         temp_theta = (self._theta *180/np.pi) % 90
         if abs(temp_theta) < thresholdAngle or abs(temp_theta - 90) < thresholdAngle:
             return True
